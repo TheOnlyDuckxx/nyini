@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nyini"
+version = "0.1.0"
+description = "Desktop wallpaper manager for local Linux libraries"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [
+  {name = "TheOnlyDuckxx"},
+]
+license-files = ["LICENSE"]
+keywords = ["linux", "wallpaper", "desktop", "pyside6"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: X11 Applications :: Qt",
+  "Intended Audience :: End Users/Desktop",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Desktop Environment",
+  "Topic :: Multimedia :: Graphics :: Viewers",
+]
+dependencies = [
+  "Pillow>=10.4",
+  "PySide6>=6.8",
+]
+
+[project.urls]
+Homepage = "https://github.com/TheOnlyDuckxx/nyini"
+Issues = "https://github.com/TheOnlyDuckxx/nyini/issues"
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3",
+]
+
+[project.gui-scripts]
+nyini = "src.main:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.setuptools.package-data]
+"src.assets.icons" = ["*.png"]
+"src.assets.styles" = ["*.qss"]
+"src.infrastructure.db" = ["schema.sql"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
